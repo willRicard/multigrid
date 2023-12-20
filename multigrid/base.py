@@ -724,10 +724,6 @@ class MultiGridEnv(gym.Env, RandomMixin, ABC):
             # For each cell in the visibility mask
             for vis_j in range(0, agent.view_size):
                 for vis_i in range(0, agent.view_size):
-                    # If this cell is not visible, don't highlight it
-                    if not vis_masks[agent.index][vis_i, vis_j]:
-                        continue
-
                     # Compute the world coordinates of this cell
                     abs_i, abs_j = top_left - (f_vec * vis_j) + (r_vec * vis_i)
 
