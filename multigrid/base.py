@@ -707,12 +707,6 @@ class MultiGridEnv(gym.Env, RandomMixin, ABC):
         """
         Render a non-partial observation for visualization.
         """
-        # Compute agent visibility masks
-        obs_shape = self.agents[0].observation_space['image'].shape[:-1]
-        vis_masks = np.zeros((self.num_agents, *obs_shape), dtype=bool)
-        for i, agent_obs in self.gen_obs().items():
-            vis_masks[i] = (agent_obs['image'][..., 0] != Type.unseen.to_index())
-
         # Mask of which cells to highlight
         highlight_mask = np.zeros((self.width, self.height), dtype=bool)
 
